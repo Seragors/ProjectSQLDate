@@ -1,12 +1,8 @@
 package redis;
 import entity.Continent;
-import lombok.*;
 import java.math.BigDecimal;
 import java.util.Set;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class CityCountry {
     private Integer id;
 

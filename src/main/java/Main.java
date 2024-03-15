@@ -36,13 +36,12 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
         List<City> allCities = main.fetchData(main);
-        List<CityCountry> preparedData;
-        preparedData = main.transformData(allCities);
+        List<CityCountry> preparedData = main.transformData(allCities);
         main.pushToRedis(preparedData);
 
         main.sessionFactory.getCurrentSession().close();
 
-        List<Integer> ids = List.of(15, 245, 123, 4, 189, 89, 345, 118, 10, 102);
+        List<Integer> ids = List.of(3, 2545, 123, 4, 189, 89, 3458, 1189, 10, 102);
 
         long startRedis = System.currentTimeMillis();
         main.testRedisData(ids);
@@ -73,7 +72,7 @@ public class Main {
         properties.put(Environment.DRIVER, "com.p6spy.engine.spy.P6SpyDriver");
         properties.put(Environment.URL, "jdbc:p6spy:mysql://localhost:3306/world");
         properties.put(Environment.USER, "root");
-        properties.put(Environment.PASS, "Y31fNfkB");
+        properties.put(Environment.PASS, "root");
         properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
         properties.put(Environment.HBM2DDL_AUTO, "validate");
         properties.put(Environment.STATEMENT_BATCH_SIZE, "100");
@@ -131,6 +130,7 @@ public class Main {
             res.setName(city.getName());
             res.setPopulation(city.getPopulation());
             res.setDistrict(city.getDistrict());
+
             Country country = city.getCountry();
             res.setAlternativeCountryCode(country.getAlternativeCode());
             res.setContinent(country.getContinent());

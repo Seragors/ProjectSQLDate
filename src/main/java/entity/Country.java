@@ -1,29 +1,29 @@
 package entity;
 import jakarta.persistence.*;
-import lombok.Data;
-
 import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity
 @Table(schema = "world", name = "country")
-@Data
 public class Country {
     @Id
     @Column(name = "id")
     private Integer id;
 
+    @Column(name = "code")
     private String code;
 
     @Column(name = "code_2")
     private String alternativeCode;
 
+    @Column(name = "name")
     private String name;
 
     @Column(name = "continent")
     @Enumerated(EnumType.ORDINAL)
     private Continent continent;
 
+    @Column(name = "region")
     private String region;
 
     @Column(name = "surface_area")
@@ -32,6 +32,7 @@ public class Country {
     @Column(name = "indep_year")
     private Short independenceYear;
 
+    @Column(name = "population")
     private Integer population;
 
     @Column(name = "life_expectancy")
